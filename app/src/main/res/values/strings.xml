@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">randomUserExample</string>
+    <string name="get_random">get random</string>
+    <string name="get_list">get list</string>
 </resources>

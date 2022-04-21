@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/user_selection">
+
+    <fragment
+        android:id="@+id/user_selection"
+        android:name="com.example.randomuser.presentation.fragment.UserSelectionFragment"
+        android:label="UserSelectionFragment">
+        <action
+            android:id="@+id/action_user_selection_to_randomUserFragment"
+            app:destination="@id/randomUserFragment" />
+        <action
+            android:id="@+id/action_user_selection_to_userListFragment"
+            app:destination="@id/userListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/randomUserFragment"
+        android:name="com.example.randomuser.presentation.fragment.RandomUserFragment"
+        android:label="RandomUserFragment" />
+
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.randomuser.presentation.fragment.UserListFragment"
+        android:label="UserListFragment" />
+
+</navigation>
