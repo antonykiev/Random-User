@@ -35,4 +35,8 @@ class KtorImpl(
             contentType(ContentType.Application.Json)
         }
     }
+
+    override suspend fun getUserUserList(page: Int, size: Int): BaseResponse<List<UserResponse>> {
+        TODO("Not yet implemented")
+    }
 }

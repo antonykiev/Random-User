@@ -1,3 +1,4 @@
 package com.example.randomuser.data.remote.api
 
-interface RemoteApi: UserApi
+interface RemoteApi: UserApi,
+    UserList
