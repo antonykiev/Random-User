@@ -6,14 +6,11 @@ import com.example.randomuser.data.remote.HttpRoutes
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RemoteApi {
+interface RemoteApi: UserApi {
 
     companion object {
         const val defaultPageSize: Int = 10
     }
-
-    @GET(HttpRoutes.GET_RANDOM)
-    suspend fun getRandomUser(): BaseResponse<List<UserResponse>>
 
     @GET(HttpRoutes.GET_RANDOM)
     suspend fun getUserUserList(
@@ -22,3 +19,4 @@ interface RemoteApi {
     ): BaseResponse<List<UserResponse>>
 
 }
+

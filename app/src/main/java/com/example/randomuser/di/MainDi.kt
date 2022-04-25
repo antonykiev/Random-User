@@ -2,6 +2,7 @@ package com.example.randomuser.di
 
 import com.example.randomuser.data.remote.api.RemoteApi
 import com.example.randomuser.data.remote.api.UserApi
+import com.example.randomuser.data.remote.ktor.KtorImpl
 import com.example.randomuser.data.remote.retrofit.RetrofitImpl
 import com.example.randomuser.data.repository.UserRepositoryImpl
 import com.example.randomuser.data.source.UserDataSource
@@ -33,11 +34,12 @@ object MainDi : ModuleDependencies {
 
     private val dataSource: Module = module {
         single { UserDataSource(get()) }
+
         single { UserListPagingSource(get()) }
     }
 
     private val remoteServices: Module = module {
-//        single<RemoteApi> { KtorImpl() }
+        single<UserApi> { KtorImpl() }
         single<RemoteApi> { RetrofitImpl() }
     }
 
