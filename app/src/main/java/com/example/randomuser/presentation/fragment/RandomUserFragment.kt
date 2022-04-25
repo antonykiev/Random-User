@@ -12,12 +12,13 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.randomuser.databinding.FragmentRandomUserBinding
 import com.example.randomuser.presentation.viewmodel.RandomUserViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RandomUserFragment : Fragment() {
 
     private lateinit var binding: FragmentRandomUserBinding
 
-    private val randomUserViewModel by viewModels<RandomUserViewModel>()
+    private val randomUserViewModel by viewModel<RandomUserViewModel>()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

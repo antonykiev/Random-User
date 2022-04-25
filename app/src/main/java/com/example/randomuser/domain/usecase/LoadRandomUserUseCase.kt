@@ -8,14 +8,9 @@ import com.example.randomuser.data.source.UserDataSource
 import com.example.randomuser.domain.entity.User
 import com.example.randomuser.domain.repository.UserRepository
 
-class LoadRandomUserUseCase {
-
-    private val service: UserApi by lazy {
-//        RetrofitImpl()
-        KtorImpl()
-    }
-    private val dataSource: UserApi by lazy { UserDataSource(service) }
-    private val repo: UserRepository by lazy { UserRepositoryImpl(dataSource) }
+class LoadRandomUserUseCase(
+    private val repo: UserRepository,
+) {
 
     suspend fun launch(): Result<User> = repo.getRandomUser().map { it.first() }
 

@@ -6,16 +6,17 @@ import androidx.lifecycle.liveData
 import com.example.randomuser.domain.entity.User
 import com.example.randomuser.domain.usecase.LoadRandomUserUseCase
 
-class RandomUserViewModel: ViewModel() {
-
-    private val useCase = LoadRandomUserUseCase()
+class RandomUserViewModel(
+    private val useCase: LoadRandomUserUseCase
+): ViewModel() {
 
     val randomUser: LiveData<State> = liveData {
         emit(State.Loading)
         useCase.launch()
             .fold(
                 { emit(State.Result(it)) },
-                {  emit(State.Error(it)) })
+                { emit(State.Error(it)) }
+            )
     }
 
     sealed class State {

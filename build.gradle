@@ -11,6 +11,7 @@ buildscript {
         mapstruct_version = '1.4.2.Final'
         navigation_version = "2.5.0-beta01"
         paging_version = "3.1.1"
+        koin_version = "3.1.4"
     }
 
     repositories {

@@ -7,7 +7,6 @@ import retrofit2.http.GET
 
 interface UserApi {
 
-    @GET(HttpRoutes.GET_RANDOM)
-    suspend fun getRandomUser(): BaseResponse<List<UserResponse>>
+
 
 }

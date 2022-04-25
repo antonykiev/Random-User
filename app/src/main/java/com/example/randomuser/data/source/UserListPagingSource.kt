@@ -2,11 +2,10 @@ package com.example.randomuser.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.randomuser.data.dto.BaseResponse
 import com.example.randomuser.data.dto.UserResponse
-import com.example.randomuser.data.remote.api.UserList
+import com.example.randomuser.data.remote.api.RemoteApi
 
-class UserListPagingSource(private val userListApi: UserList): PagingSource<Int, UserResponse>() {
+class UserListPagingSource(private val userListApi: RemoteApi): PagingSource<Int, UserResponse>() {
 
     private val startPagingIndex = 0
 

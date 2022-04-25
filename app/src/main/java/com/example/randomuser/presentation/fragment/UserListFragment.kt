@@ -18,12 +18,13 @@ import com.example.randomuser.presentation.viewmodel.UserListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserListFragment : Fragment() {
 
     private lateinit var binding: FragmentUserListBinding
 
-    private val userListViewModel by viewModels<UserListViewModel>()
+    private val userListViewModel by viewModel<UserListViewModel>()
 
     private val adapter by lazy { UsersAdapter() }
 
