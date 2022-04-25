@@ -1,7 +1,7 @@
 package com.example.randomuser.di
 
-import com.example.randomuser.data.remote.api.RemoteApi
 import com.example.randomuser.data.remote.api.UserApi
+import com.example.randomuser.data.remote.api.UserList
 import com.example.randomuser.data.remote.ktor.KtorImpl
 import com.example.randomuser.data.remote.retrofit.RetrofitImpl
 import com.example.randomuser.data.repository.UserRepositoryImpl
@@ -34,13 +34,12 @@ object MainDi : ModuleDependencies {
 
     private val dataSource: Module = module {
         single { UserDataSource(get()) }
-
         single { UserListPagingSource(get()) }
     }
 
     private val remoteServices: Module = module {
         single<UserApi> { KtorImpl() }
-        single<RemoteApi> { RetrofitImpl() }
+        single<UserList> { RetrofitImpl() }
     }
 
     override val batch: List<Module>
@@ -51,5 +50,4 @@ object MainDi : ModuleDependencies {
             dataSource,
             remoteServices
         )
-
 }
