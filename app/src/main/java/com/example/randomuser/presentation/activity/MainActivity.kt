@@ -7,13 +7,4 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.randomuser.R
 import com.example.randomuser.presentation.viewmodel.RandomUserViewModel
 
-class MainActivity : AppCompatActivity() {
-
-    private val randomUserViewModel by lazy { ViewModelProvider(this)[RandomUserViewModel::class.java] }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-
-}
+class MainActivity : AppCompatActivity(R.layout.activity_main)

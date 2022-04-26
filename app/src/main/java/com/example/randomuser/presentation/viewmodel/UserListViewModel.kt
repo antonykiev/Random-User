@@ -8,9 +8,7 @@ import com.example.randomuser.data.dto.UserResponse
 import com.example.randomuser.domain.usecase.LoadRandomPagingUserListUseCase
 import kotlinx.coroutines.flow.Flow
 
-class UserListViewModel(
-    private val useCase: LoadRandomPagingUserListUseCase
-    ): ViewModel() {
+class UserListViewModel(private val useCase: LoadRandomPagingUserListUseCase): ViewModel() {
 
     fun loadUserList(): Flow<PagingData<UserResponse>> = useCase.load().cachedIn(viewModelScope)
 

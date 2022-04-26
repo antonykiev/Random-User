@@ -1,19 +1,15 @@
 package com.example.randomuser.presentation.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import com.example.randomuser.data.dto.UserResponse
-import com.example.randomuser.databinding.FragmentRandomUserBinding
 import com.example.randomuser.databinding.FragmentUserListBinding
 import com.example.randomuser.presentation.adapter.UsersAdapter
-import com.example.randomuser.presentation.viewmodel.RandomUserViewModel
 import com.example.randomuser.presentation.viewmodel.UserListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged

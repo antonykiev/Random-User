@@ -21,6 +21,4 @@ class LoadRandomPagingUserListUseCase(
             pagingSourceFactory = { UserListPagingSource(remoteApi) }
         ).flow
     }
-
-
 }
