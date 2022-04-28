@@ -5,22 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import com.example.randomuser.data.dto.UserResponse
 import com.example.randomuser.databinding.FragmentUserListBinding
+import com.example.randomuser.di.Injectable
 import com.example.randomuser.presentation.adapter.UsersAdapter
+import com.example.randomuser.presentation.viewmodel.RandomUserViewModel
 import com.example.randomuser.presentation.viewmodel.UserListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
-class UserListFragment : Fragment() {
+class UserListFragment : Fragment(), Injectable {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val userListViewModel by viewModels<UserListViewModel> { viewModelFactory }
 
     private lateinit var binding: FragmentUserListBinding
-
-    private val userListViewModel by viewModel<UserListViewModel>()
 
     private val adapter by lazy { UsersAdapter() }
 

@@ -11,7 +11,7 @@ buildscript {
         mapstruct_version = '1.4.2.Final'
         navigation_version = "2.5.0-beta01"
         paging_version = "3.1.1"
-        koin_version = "3.1.4"
+        dagger_version = "2.40.5"
         glide_version = "4.13.0"
     }
 

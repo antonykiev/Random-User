@@ -7,8 +7,10 @@ import com.example.randomuser.data.dto.UserResponse
 import com.example.randomuser.data.remote.api.UserList
 import com.example.randomuser.data.source.UserListPagingSource
 import kotlinx.coroutines.flow.Flow
+//import javax.inject.Inject
+//import javax.inject.Singleton
 
-class LoadRandomPagingUserListUseCase(
+class LoadRandomPagingUserListUseCase (
     private val remoteApi: UserList
 ) {
 

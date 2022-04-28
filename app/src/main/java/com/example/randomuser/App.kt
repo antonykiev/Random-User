@@ -1,31 +1,24 @@
 package com.example.randomuser
 
 import android.app.Application
-import com.example.randomuser.di.MainDi
-import com.example.randomuser.di.ModuleDependencies
+import com.example.randomuser.di.AppInjector
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
+class App: Application(), HasAndroidInjector {
 
-class App: Application() {
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
 
-        initKoin()
+        AppInjector.init(this)
+
     }
 
-    private fun initKoin() {
-        startKoin {
-//            androidLogger()
-            androidContext(this@App)
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
-            arrayOf(
-                MainDi,
-            )
-                .flatMap(ModuleDependencies::batch)
-                .apply(::modules)
-        }
-    }
 }

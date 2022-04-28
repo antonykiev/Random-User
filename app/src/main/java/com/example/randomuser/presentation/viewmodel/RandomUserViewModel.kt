@@ -5,8 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.example.randomuser.domain.entity.User
 import com.example.randomuser.domain.usecase.LoadRandomUserUseCase
+import javax.inject.Inject
 
-class RandomUserViewModel(
+class RandomUserViewModel @Inject constructor (
     private val useCase: LoadRandomUserUseCase
 ): ViewModel() {
 

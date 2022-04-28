@@ -7,8 +7,11 @@ import androidx.paging.cachedIn
 import com.example.randomuser.data.dto.UserResponse
 import com.example.randomuser.domain.usecase.LoadRandomPagingUserListUseCase
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class UserListViewModel(private val useCase: LoadRandomPagingUserListUseCase): ViewModel() {
+class UserListViewModel @Inject constructor(
+    private val useCase: LoadRandomPagingUserListUseCase
+    ): ViewModel() {
 
     fun loadUserList(): Flow<PagingData<UserResponse>> = useCase.load().cachedIn(viewModelScope)
 
