@@ -14,6 +14,7 @@ import com.example.randomuser.databinding.FragmentRandomUserBinding
 import com.example.randomuser.di.Injectable
 import com.example.randomuser.domain.entity.User
 import com.example.randomuser.presentation.viewmodel.RandomUserViewModel
+import timber.log.Timber
 import javax.inject.Inject
 
 class RandomUserFragment : Fragment(), Injectable {
@@ -33,12 +34,12 @@ class RandomUserFragment : Fragment(), Injectable {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         randomUserViewModel.randomUser.observe(viewLifecycleOwner) {
+            Timber.d("USER = %s", it)
             when (it) {
-                is RandomUserViewModel.State.Error,
-                is RandomUserViewModel.State.Loading -> {
-                    binding.progress.visibility = View.INVISIBLE
-                }
+                is RandomUserViewModel.State.Error -> binding.progress.visibility = View.INVISIBLE
+                is RandomUserViewModel.State.Loading -> binding.progress.visibility = View.VISIBLE
                 is RandomUserViewModel.State.Result -> {
+                    binding.progress.visibility = View.INVISIBLE
                     setUser(it.value)
                 }
             }

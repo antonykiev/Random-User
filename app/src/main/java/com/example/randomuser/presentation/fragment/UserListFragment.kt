@@ -13,10 +13,11 @@ import com.example.randomuser.data.dto.UserResponse
 import com.example.randomuser.databinding.FragmentUserListBinding
 import com.example.randomuser.di.Injectable
 import com.example.randomuser.presentation.adapter.UsersAdapter
-import com.example.randomuser.presentation.viewmodel.RandomUserViewModel
 import com.example.randomuser.presentation.viewmodel.UserListViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,15 +40,17 @@ class UserListFragment : Fragment(), Injectable {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.rvUsers.adapter = adapter
 
-
         viewLifecycleOwner.lifecycleScope.launch {
             userListViewModel.loadUserList()
                 .distinctUntilChanged()
+                .onEach { delay(1_000) }//for test progress
                 .collectLatest (::onUsersLoaded)
         }
     }
 
     private suspend fun onUsersLoaded(data: PagingData<UserResponse>) {
+        binding.progress.visibility = View.INVISIBLE
         adapter.submitData(data)
     }
+
 }
